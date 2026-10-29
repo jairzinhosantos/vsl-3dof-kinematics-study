@@ -1,0 +1,33 @@
+{
+  "created_at_utc": "2026-10-29T01:40:24.069247+00:00",
+  "python": "3.12.14",
+  "numpy": "2.5.4",
+  "config": {
+    "id": "exp-002",
+    "samples": 500,
+    "seed": 2026,
+    "noise_std_m": 0.002,
+    "q_range_rad": [
+      -1.0,
+      1.0
+    ],
+    "data_kind": "synthetic_sensor_fixture",
+    "purpose": "Probar lectura, métricas y visualización; no es validación experimental."
+  },
+  "source_sha256": {
+    "src/robotics_study/model.py": "6da2fecad5515a84955c25d9546148b01bb6bda5ee8ced845cfda15ab57f183d",
+    "src/robotics_study/simulation.py": "6c7e69f45e170fde8c8d07128e719ced1628c9656140265c15c72cfc72a80175",
+    "scripts/run_experiments.py": "df42a8ce329259e51a4fbd59a8eeb71f107c9313d3cfdcb39bc73df5a7de76cd",
+    "experiments/exp-002-dummy-sensor/config.json": "fa1ab9cf830db4b512c67f71cedd28b696d2fc0111d230ac1d46591359d065f0"
+  },
+  "status": "Review",
+  "physical_measurements": false,
+  "rmse_position_m": 0.0035045512768700224,
+  "expected_rms_m": 0.0034641016151377543,
+  "passed_fixture_check": true,
+  "interpretation": "Prueba del flujo de datos; no estima precisión del robot real.",
+  "output_sha256": {
+    "synthetic-error.png": "d2452d15a361da1a8a5cbbe4f50c94d5f7423e00b9f769eed65ac876f1466050",
+    "synthetic-sensor.csv": "7432294603ecb270021d7f3d5fdac0880118f1516eed3fea9903e07e65c7a8e5"
+  }
+}

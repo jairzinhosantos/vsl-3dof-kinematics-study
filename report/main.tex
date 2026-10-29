@@ -1,0 +1,33 @@
+\documentclass[11pt]{article}
+\input{preamble}
+\begin{document}
+\begin{titlepage}\centering
+\vspace*{7mm}
+\IfFileExists{../assets/branding/uni-logo.png}{\includegraphics[width=30mm]{../assets/branding/uni-logo.png}}{\IfFileExists{../assets/branding/uni-logo.pdf}{\includegraphics[width=30mm]{../assets/branding/uni-logo.pdf}}{\fbox{\parbox[c][24mm][c]{45mm}{\centering Logo oficial UNI\\pendiente}}}}
+\par\vspace{6mm}{\Large UNIVERSIDAD NACIONAL DE INGENIERÍA\par}
+\vspace{5mm}{\large [Nombre oficial de la maestría]\par}
+\vspace{12mm}{\Huge\bfseries\color{navy}Trabajo Parcial\par}
+\vspace{5mm}{\Large Modelado y simulación cinemática de un robot antropomórfico de 3 GDL\par}
+\vspace{5mm}Basado en el robot VSL de Ramzy et al. (2024)\\Alcance rígido nominal pendiente de confirmación
+\vfill
+\begin{tabular}{ll}Curso:&Robótica y Sistemas Autónomos\\Docente:&Ing. Wilson Dennis Reyes Vásquez\\Semestre:&2026-2\\Autores:&Josemanuel [apellidos]\\&Melissa [apellidos]\\&Jairzinho [apellidos]\\&Renzo [apellidos]\\&Kenny [apellidos]\end{tabular}
+\vfill Lima, Perú\par[Fecha de entrega]\par\vspace{6mm}
+\nota{Plantilla v0.2 para revisión. El borrador de cinemática diferencial se mantiene separado. Completar datos de carátula y eliminar las notas de trabajo sólo después de revisión.}
+\end{titlepage}
+\tableofcontents\newpage
+\input{sections/introduction}
+\section{Desarrollo}
+\input{sections/model}
+\input{sections/forward-kinematics}
+\input{sections/inverse-kinematics}
+\input{sections/differential-kinematics}
+\input{sections/singularities}
+\input{sections/control}
+\input{sections/results}
+\input{sections/reflections}
+\input{sections/conclusions}
+\input{sections/recommendations}
+\printbibliography[heading=bibnumbered,title={Referencias}]
+\appendix
+\input{sections/appendices}
+\end{document}

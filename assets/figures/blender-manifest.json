@@ -1,0 +1,11 @@
+{
+  "blender_version": "5.1.2",
+  "input_sha256": "47704b609a46bbbfbb04ef71e5fc47e183102ec96581b1986c44b14d02704463",
+  "script_sha256": "eecf06ed3ee7e33f33bb4a7ef7b3c9717b3124932dc44a0738b5e1884b3061f1",
+  "frames": 201,
+  "fps": 20,
+  "units": "m",
+  "max_link_length_error_m": 2.443790436679194e-08,
+  "kind": "kinematic_visualization",
+  "physical_validation": false
+}

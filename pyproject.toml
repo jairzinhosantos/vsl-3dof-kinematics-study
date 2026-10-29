@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vsl-3dof-kinematics-study"
+version = "0.2.0"
+description = "Estudio cinemático reproducible del robot VSL de 3 GDL, MIA UNI"
+requires-python = ">=3.11"
+dependencies = ["numpy>=2.3,<3", "matplotlib>=3.10,<4", "sympy>=1.14,<2", "plotly>=6,<7"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/robotics_study"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

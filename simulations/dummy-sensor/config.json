@@ -1,0 +1,1 @@
+{"id":"exp-002","samples":500,"seed":2026,"noise_std_m":0.002,"q_range_rad":[-1.0,1.0],"data_kind":"synthetic_sensor_fixture","purpose":"Probar lectura, métricas y visualización; no es validación experimental."}
