@@ -1,13 +1,13 @@
 \section{Conclusiones}
 \subsection{Cinemática directa}
-\pendiente{Se sintetizará la relación entre las coordenadas articulares y la pose del efector, a partir del modelo desarrollado y sus comprobaciones.}
+Los métodos geométrico, de transformaciones elementales y DH producen posiciones coincidentes dentro de la precisión numérica. La tabla del ejemplo antropomórfico del curso es compatible con la estructura del robot del paper al sustituir las dimensiones.
 \subsection{Cinemática inversa}
-\pendiente{Se resumirán las soluciones obtenidas, las condiciones de alcanzabilidad y los errores de reconstrucción.}
+La reducción al plano radial permite obtener dos ramas de codo para la base principal. La reconstrucción por directa verifica ambas soluciones; la existencia de múltiples configuraciones impide exigir una única respuesta articular. Los límites físicos continúan por documentarse.
 \subsection{Cinemática diferencial}
-\pendiente{Se expondrá la correspondencia entre velocidades articulares y cartesianas, sustentada en la comparación del Jacobiano con derivadas numéricas.}
+La derivación de $P_{03}$ y la construcción geométrica recuperan el mismo $J_L$. La comparación temporal verifica la relación $\dot P_{03}=J_L\dot q$ y su convergencia. La velocidad angular se describe con $J_\omega$ y no con derivadas de Euler sin transformación adicional.
 \subsection{Singularidades}
-\pendiente{Se identificarán las configuraciones singulares y sus consecuencias para el movimiento del efector.}
+La pérdida de rango de la tarea de posición ocurre en codos alineados o sobre el eje de base. Debe distinguirse del rango del Jacobiano completo. El caso singular de control muestra que la pseudoinversa, por sí sola, no garantiza corregir cualquier error cartesiano.
 \subsection{Control cinemático}
-\pendiente{Se evaluará el seguimiento de trayectoria mediante errores, velocidades y comportamiento cerca de singularidades.}
+La ley de clase adaptada al RRR reduce el error en los dos escenarios regulares ensayados. El refinamiento de Euler disminuye el error de seguimiento, por lo que el paso temporal debe declararse junto a las métricas.
 \subsection{Conclusión general}
-\pendiente{Se integrarán los hallazgos de los cinco temas y se precisarán el alcance y las limitaciones de los resultados obtenidos.}
+Los contenidos de las semanas 4--9 permiten formular y comprobar un desarrollo cinemático consistente del manipulador. La evidencia obtenida corresponde a simulación ideal del modelo nominal; no reproduce la dinámica flexible ni los ensayos físicos del artículo. La revisión del equipo deberá completar el contraste documental y la interpretación de los resultados.

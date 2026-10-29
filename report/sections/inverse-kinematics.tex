@@ -1,2 +1,17 @@
 \subsection{Cinemática inversa}
-\pendiente{El apartado desarrollará las soluciones articulares, sus ramas y las condiciones de alcanzabilidad. La comprobación utilizará la cinemática directa y el residuo cartesiano, incluyendo objetivos alcanzables, inalcanzables y casos degenerados.}
+Se sigue la reducción geométrica y la ley de cosenos de las semanas 5 y 7 \parencite{course5,course7}. Para un objetivo $P_d=[x,y,z]^T$, se define
+\begin{equation}
+r=\sqrt{x^2+y^2},\quad z'=z-l_1,\quad D^2=r^2+z'^2,\quad
+\theta_1=\operatorname{atan2}(y,x).
+\end{equation}
+La rama de base elegida utiliza $\rho=r\geq0$. El codo cumple
+\begin{align}
+C_3&=\frac{D^2-l_2^2-l_3^2}{2l_2l_3},\qquad
+S_3=\pm\sqrt{1-C_3^2},\\
+\theta_3&=\operatorname{atan2}(S_3,C_3),\\
+\theta_2&=\operatorname{atan2}(z',r)-
+\operatorname{atan2}(l_3S_3,l_2+l_3C_3).
+\end{align}
+Hay solución geométrica si $|l_2-l_3|\leq D\leq l_2+l_3$. Las dos elecciones de $S_3$ dan las ramas de codo; coinciden en los extremos. El signo corresponde al ángulo articular con codo cero al extenderse, que se distingue del ángulo interior suplementario del triángulo.
+
+En el eje $x=y=0$, $\theta_1$ queda indeterminado; el código devuelve un representante elegido. No se enumeran aquí todas las configuraciones equivalentes con base girada $\pi$ y radio negativo, ni se aplican límites físicos desconocidos. La comprobación es $P_d\to q\to P_{03}$: se valida la posición reconstruida, no la igualdad con una única configuración original. Se incluyen pruebas de objetivos inalcanzables y casos degenerados.

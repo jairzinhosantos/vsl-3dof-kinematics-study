@@ -2,3 +2,7 @@
 simulations/**/results/** -text -whitespace linguist-generated=true
 *.png binary
 *.blend binary
+
+# Material docente original, sin normalización de bytes.
+assets/utility/** -text -whitespace
+*.pdf binary

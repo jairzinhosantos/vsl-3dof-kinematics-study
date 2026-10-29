@@ -1,16 +1,16 @@
-# Simulation · un modelo, distintas salidas
+# Simulation · un modelo, distintos casos
 
-El proyecto utiliza un robot RRR con dimensiones tomadas del paper. [model.py](../code/model.py) calcula posiciones y Jacobianos; [motion.py](../code/motion.py) define una trayectoria articular y evalúa sus velocidades.
+El proyecto utiliza un robot RRR con dimensiones tomadas del paper. Los [resultados preparados](../simulations/README.md) se pueden revisar sin ejecutar código.
 
-| Salida | Función | Cálculo independiente |
-|---|---|---|
-| Curvas y CSV | Cuantificar posición, velocidad y error | Modelo Python |
-| Visor HTML | Examinar el movimiento en 3D | Usa las posiciones calculadas |
-| Blender | Producir una escena y render del mismo movimiento | Lee `motion.json` |
-| Datos dummy | Probar el flujo de datos con ruido diseñado | Caso opcional del mismo robot |
+| Caso o representación | Función |
+|---|---|
+| `course` | Comparar métodos de directa, resolver inversa, interpolar y controlar posición/seguimiento |
+| `differential` | Prescribir una trayectoria articular y comprobar velocidades |
+| Visor HTML y Blender | Representar la misma trayectoria diferencial calculada |
+| `dummy-sensor` | Probar el procesamiento con ruido sintético |
 
-El orden es **pruebas → simulación → visualización → informe**. Los [comandos del README](../README.md#orden-de-ejecución) ejecutan cada paso. Blender requiere primero una simulación existente con el mismo `run-id`.
+El control utiliza la pseudoinversa del Jacobiano de posición y Euler explícito, siguiendo la semana 9. Se comprueban la reducción del error y el efecto del paso temporal; un caso singular muestra estancamiento. No se incluyen saturación, flexibilidad, contacto ni ensayos físicos.
 
-La implementación actual evalúa movimiento prescrito de eslabones rígidos. El control de seguimiento aún no está implementado. La visualización no incluye flexibilidad, contacto ni ensayos físicos; los datos dummy tampoco constituyen mediciones reales.
+Para modificar resultados, el orden es **cálculo → gráficas → informe → comprobaciones**. La [guía opcional](reproduce.md) reúne los comandos. Blender requiere una ejecución diferencial previa con el mismo identificador.
 
-NumPy realiza los cálculos, SymPy comprueba expresiones, Matplotlib produce las curvas y Plotly el visor. Blender sólo es necesario para generar la escena `.blend`. Las dependencias Python están fijadas en `uv.lock`.
+NumPy realiza los cálculos, SymPy comprueba expresiones, Matplotlib produce curvas y Plotly el visor. Blender sólo se necesita para generar la escena `.blend`. Las dependencias Python están fijadas en `uv.lock`.

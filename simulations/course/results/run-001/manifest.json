@@ -1,0 +1,85 @@
+{
+  "physical_measurements": false,
+  "config": {
+    "lengths_m": [
+      0.04,
+      0.29,
+      0.24
+    ],
+    "example_q_deg": [
+      30,
+      40,
+      -50
+    ],
+    "final_q_deg": [
+      -20,
+      20,
+      -70
+    ],
+    "interpolation_duration_s": 3.0,
+    "interpolation_dt_s": 0.01,
+    "workspace_ranges_deg": [
+      [
+        -140,
+        140
+      ],
+      [
+        -120,
+        120
+      ],
+      [
+        -110,
+        110
+      ]
+    ],
+    "workspace_samples_per_joint": 21,
+    "workspace_limits_kind": "illustrative_course_ranges_not_hardware_limits",
+    "position_q0_rad": [
+      0.5,
+      0.6,
+      -0.8
+    ],
+    "position_target_q_rad": [
+      -0.3,
+      0.8,
+      -1.0
+    ],
+    "position_duration_s": 10.0,
+    "tracking_duration_s": 20.0,
+    "tracking_initial_offset_rad": [
+      0.12,
+      -0.08,
+      0.1
+    ],
+    "dt_s": 0.1,
+    "gain_per_s": 1.0,
+    "data_kind": "synthetic_kinematic_simulation"
+  },
+  "checks": {
+    "direct": true,
+    "inverse": true,
+    "position": true,
+    "tracking_step": true
+  },
+  "source_sha256": {
+    "simulations/course/config.json": "31e6db8a920c6ca9f760ada0c9a080106940340992f7450262e2be523978ad02",
+    "code/model.py": "745a362f55e335e751b79c7f56fbf9e8d15774ee145f02261ad4e39366ee315f",
+    "code/course.py": "2e079407c9ebc69e8cd6e80b91ec87281d8e270dfc9dbb8988198fd039ea6fd1",
+    "code/course_demo.py": "94344e161a910d8fdb8ec2e4c2d040e1e9124e41e68611501f9c2dea9ab59b0a"
+  },
+  "output_sha256": {
+    "polynomial-5.csv": "7c3da2788fa5a24fa5202ade7345d3bfc9477e8f01d3590ecbfe4299cf7c613a",
+    "metrics.json": "a3c5e8159c8c8c2771c25ef2cf094ece0ad98da1a2b29be3b2522a4858dbd7db",
+    "position-commands.csv": "2c38bc500de9b9d667f3cfd22012302e8e960ddd816cb1e4a28bc702a68bd307",
+    "polynomial-3.csv": "2a8251e359014079a5a343c405e378136e2c62a0a78a359de635f51216841b96",
+    "control.png": "c56f5a592a4f9491c1274bed2207265e348d393f4b09edde4b72801c57c578e0",
+    "interpolation.png": "f7c51af52bf3d27b2985b28a763938421f3b3171b06583fc1cab94b6d61d9cb1",
+    "tracking.png": "238060ed04fa57fb916b7850af3a399a2fb9f5eeb01ef2a793c2f9534d038abe",
+    "tracking.csv": "5c6df00296aa490add1a21f00ebb00069281c6d3ab43aa9831cb7d824acb7439",
+    "tracking-commands.csv": "a391a4ce46157981e84301579d8abd74ca90526911de9eb65f48f105f216dd84",
+    "workspace.png": "36bbe70fe683c4c5bfedc4ba4127375d5b1f48363357245df6d2cbd8640760d9",
+    "inverse.csv": "03304588ff225925a305ddd2be04fd714dab6a3cde8562c805d231ef412e26b6",
+    "position.csv": "d16ec13279f5a733dcd612454415a81b93d5a612dfd6e10f04fadcba75b23046"
+  },
+  "status": "Review"
+}

@@ -18,7 +18,9 @@ El [tablero](https://github.com/users/jairzinhosantos/projects/4) concentra las 
 - Precisar la fecha y duración de exposición. La referencia de entrega es la semana siguiente al 28/10/2026.
 - Completar nombres de autores en la portada.
 - La consigna menciona opinión personal. La versión actual organiza las conclusiones por tema y una general, según la aclaración de Jairzinho; se revisará internamente su correspondencia con ese requisito.
-- Revisar el borrador diferencial antes de integrarlo. Inversa y control aún requieren desarrollo.
+- Revisar con cada responsable el desarrollo propuesto en el borrador 04: la inversa, los interpoladores y el control ya tienen una implementación numérica; su inclusión en el PR no constituye aceptación del equipo.
+- Incorporar la semana 10 cuando esté disponible.
+- Confirmar si la mención de dinámica en los apuntes de semana 7 aplica a este parcial; la consigna base comprende cinco bloques cinemáticos.
 
 ## Referencia de formato
 

@@ -22,8 +22,9 @@ No confundir rho con la distancia no negativa sqrt(x²+y²). Las transformacione
 
 ## Contrato del código
 
-- `forward(q)` devuelve T03, orígenes previos y ejes articulares en la base.
-- `jacobian(q)` devuelve Jv, Jw y Jg con orden `[v;omega]`.
+- `dh(theta,d,a,alpha)` conserva el orden de argumentos de clase; todos los ángulos están en radianes.
+- `forward(q)` devuelve M03, orígenes previos y ejes articulares en la base.
+- `jacobian(q)` devuelve JL, Jw y J con orden `[v;omega]`.
 - `joint_points(q)` devuelve base, hombro, codo y efector, en metros.
 - Las funciones rechazan formas distintas de `(3,)`, valores no finitos y longitudes no positivas.
 

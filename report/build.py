@@ -5,6 +5,8 @@ import subprocess
 import os
 import platform
 import tempfile
+import hashlib
+import json
 
 ROOT = Path(__file__).resolve().parents[1]
 PROJECTS = {'report': 'report'}
@@ -21,6 +23,13 @@ def compile_projects(env):
         if result.returncode:
             raise RuntimeError(f'Fallo LaTeX: {build / "compilation.log"}')
         shutil.copy2(build/'main.pdf', out/(name+'.pdf'))
+        inputs = list(project.glob('*.tex')) + list(project.glob('sections/*.tex')) + list(project.glob('*.bib'))
+        inputs += [ROOT/'assets/logos/uni-logo.png', ROOT/'simulations/differential/results/run-001/diagnostics.png']
+        inputs += list((ROOT/'simulations/course/results/run-001').glob('*.png'))
+        inputs += [ROOT/'simulations/course/results/run-001/metrics.json']
+        sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+        record = {'pdf': str((out/(name+'.pdf')).relative_to(ROOT)), 'pdf_sha256': sha(out/(name+'.pdf')), 'source_sha256': {str(p.relative_to(ROOT)): sha(p) for p in sorted(inputs)}}
+        (out/'build.json').write_text(json.dumps(record,indent=2)+'\n')
         print(f'Exportado: {name}.pdf', flush=True)
 
 def main():

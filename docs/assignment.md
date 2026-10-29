@@ -14,3 +14,5 @@ Se empleará Python, permitido según la aclaración del profesor comunicada por
 | Apoyos de exposición | 5 |
 
 Los originales de la consigna, la rúbrica y el paper se conservan en `_local/sources/`. [source-manifest.json](source-manifest.json) registra sus nombres y hashes. La coordinación del equipo y las consultas académicas se mantienen en [internal.md](internal.md).
+
+La [correspondencia con las clases](course-alignment.md) relaciona cada método con el material recibido de las semanas 4 a 9.

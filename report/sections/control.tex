@@ -1,2 +1,22 @@
 \subsection{Control cinemático}
-\pendiente{Se formulará una ley de seguimiento con trayectoria, ganancias, condiciones iniciales y límites definidos. La simulación evaluará errores, velocidades articulares y proximidad a singularidades en un escenario regular y otro exigente.}
+Los ejemplos de la semana 9 emplean error cartesiano, pseudoinversa e integración explícita de Euler \parencite{course9}. Se conserva ese método y se adapta su robot de cuatro articulaciones al RRR del paper. Con $h=P_{03}$ y $e=h_d-h$:
+\begin{align}
+\dot q_{\mathrm{ref}}&=J_L^+Ke &&\text{(posición fija)},\\
+\dot q_{\mathrm{ref}}&=J_L^+(\dot h_d+Ke) &&\text{(seguimiento)},\\
+q_{k+1}&=q_k+T_s\dot q_{\mathrm{ref},k}.
+\end{align}
+Se utiliza $K=I\ \mathrm{s}^{-1}$ y $T_s=0.1$ s, como referencia de clase. Para rango completo e integración ideal, $\dot e=-Ke$; en una singularidad esta identidad no se cumple en todas las direcciones. La simulación discreta y las velocidades calculadas se evalúan por separado.
+
+\textbf{Posición.} Se parte de $q_0=(0.5,0.6,-0.8)$ rad y se fija como objetivo la posición correspondiente a $q_f=(-0.3,0.8,-1)$ rad. En 10 s el error se reduce de 0.35948 m a $9.57\times10^{-6}$ m; la velocidad articular máxima absoluta es 1.512 rad/s.
+
+\textbf{Seguimiento.} Se adopta una referencia sinusoidal adaptada al tamaño del robot:
+\begin{equation}
+h_d(t)=\begin{bmatrix}0.35+0.03\cos(0.4t)\\0.10+0.03\sin(0.4t)\\0.23+0.02\sin(0.5t)\end{bmatrix}\mathrm{m}.
+\end{equation}
+La velocidad deseada es su derivada analítica. La condición inicial se obtiene por inversa de $h_d(0)$, tomando la rama de codo negativa y sumando $(0.12,-0.08,0.10)$ rad. La simulación dura 20~s. El RMSE cartesiano entre 10 y 20 s es $2.67\times10^{-4}$ m; con $T_s=0.05$ s disminuye a $1.33\times10^{-4}$ m. El RMSE de todo el intervalo, incluido el transitorio, es 0.008589 m para el paso de 0.1 s.
+
+El mínimo valor singular se mantiene en 0.0931 m/rad para posición y 0.1261 m/rad para seguimiento. Estos resultados corresponden a los escenarios indicados. No se introducen límites de velocidad de fabricante, saturación, torques ni dinámica flexible; por tanto no constituyen validación física ni garantía general de seguimiento.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../simulations/course/results/run-001/control.png}
+\caption{Errores y velocidades articulares en control de posición y seguimiento.}
+\end{figure}

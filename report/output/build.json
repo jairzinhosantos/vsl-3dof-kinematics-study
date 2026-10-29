@@ -1,0 +1,29 @@
+{
+  "pdf": "report/output/report.pdf",
+  "pdf_sha256": "e924c37028cc3c63d147b5b215e6dec9f380c47097c0002a0f56d0dda0214d78",
+  "source_sha256": {
+    "assets/logos/uni-logo.png": "b73c20f0ed1644aa1f83f508a02c8f05bb972eb0b2fe6ab1b641c6c67951cb2f",
+    "report/main.tex": "13a7b4aa6d758e2c682b08ec954f578ef04db68350865b4e17203b5a74c5527e",
+    "report/preamble.tex": "b79d827b46986253bb4d9da498f69f252417351ed66d0d35706791d326abdc16",
+    "report/references.bib": "ed7eac3f238f272021bc85b9a24642e8a7b596202212f3b1da7a79c8878e5096",
+    "report/sections/appendices.tex": "755f54fff9c1d342cfdae4926198b3c8907d9a6c8213b3373a0c616c67738834",
+    "report/sections/conclusions.tex": "95b86482393b58252d6e37100a9517cf8cececa6f3b536044ab333661b7e023a",
+    "report/sections/control.tex": "1dbfac638081099288d3b4cc4b6fb25cfc3f135d3645f226ee9656e28874da23",
+    "report/sections/differential-kinematics.tex": "8c6e7ffcf69c7523d5a25e0b249421acd43618d732ea5a840bc1ac786eff4622",
+    "report/sections/forward-kinematics.tex": "c8b4f180d1a13e5efcbb5f4211a869b0b6ac990ef4911505e7e91b629b6f4171",
+    "report/sections/introduction.tex": "cdbb8965fe9c778c5a3ff952de89fd065dbe89036e6561d7eb4617331043d7c0",
+    "report/sections/inverse-kinematics.tex": "23948fd19fc5ef2df84e0462d776d21ab1d42b2e1950ec1f4f947ebb1cf9f6f4",
+    "report/sections/model.tex": "aadf0fcd11c6a7c63296a2d512700b3bbee905ced53be3bd8b48be4db7f6b000",
+    "report/sections/paper-summary.tex": "177d84ab8a12012abe4044d42a438772a97c470d8715806f8d62390c1229e032",
+    "report/sections/recommendations.tex": "347b5a09f7e0e331e88ed18d795470f68cbe7c60e34bbc7f5edacccd268ef28b",
+    "report/sections/results.tex": "6e2c5c151a14b4be0d7eac42c1bb743d0d11fb4287474b32ab983200551f1c64",
+    "report/sections/singularities.tex": "f2b964889d8347447848cca5ef32ba4a12a990d01886317939c3b52e62a00cd9",
+    "report/sections/trajectories.tex": "ed284880f20296f344725a3518c919e7e72aec861600e412a8587099e99b444d",
+    "simulations/course/results/run-001/control.png": "c56f5a592a4f9491c1274bed2207265e348d393f4b09edde4b72801c57c578e0",
+    "simulations/course/results/run-001/interpolation.png": "f7c51af52bf3d27b2985b28a763938421f3b3171b06583fc1cab94b6d61d9cb1",
+    "simulations/course/results/run-001/metrics.json": "a3c5e8159c8c8c2771c25ef2cf094ece0ad98da1a2b29be3b2522a4858dbd7db",
+    "simulations/course/results/run-001/tracking.png": "238060ed04fa57fb916b7850af3a399a2fb9f5eeb01ef2a793c2f9534d038abe",
+    "simulations/course/results/run-001/workspace.png": "36bbe70fe683c4c5bfedc4ba4127375d5b1f48363357245df6d2cbd8640760d9",
+    "simulations/differential/results/run-001/diagnostics.png": "9ecf7775198bf52b486d1a570fa6a5d8bc67316c404c1a1fdf9af529104c3e14"
+  }
+}
