@@ -1,0 +1,54 @@
+{
+  "created_at_utc": "2026-10-29T01:40:24.017315+00:00",
+  "python": "3.12.14",
+  "numpy": "2.5.4",
+  "config": {
+    "id": "exp-001",
+    "model": "nominal-rigid-rrr",
+    "lengths_m": [
+      0.04,
+      0.29,
+      0.24
+    ],
+    "duration_s": 10.0,
+    "dt_s": 0.01,
+    "convergence_dt_s": [
+      0.02,
+      0.01,
+      0.005
+    ],
+    "velocity_tolerance_m_s": 1e-05,
+    "seed": 2026,
+    "data_kind": "synthetic_prescribed_motion"
+  },
+  "source_sha256": {
+    "src/robotics_study/model.py": "6da2fecad5515a84955c25d9546148b01bb6bda5ee8ced845cfda15ab57f183d",
+    "src/robotics_study/simulation.py": "6c7e69f45e170fde8c8d07128e719ced1628c9656140265c15c72cfc72a80175",
+    "scripts/run_experiments.py": "df42a8ce329259e51a4fbd59a8eeb71f107c9313d3cfdcb39bc73df5a7de76cd",
+    "experiments/exp-001-differential/config.json": "4f5f4ff09b9341b72184d727acefa82f879a1a55da908c39fec0bc5812b6f1ac"
+  },
+  "status": "Review",
+  "physical_measurements": false,
+  "passed": true,
+  "convergence": [
+    {
+      "dt_s": 0.02,
+      "max_velocity_error_m_s": 1.5941630834198092e-06
+    },
+    {
+      "dt_s": 0.01,
+      "max_velocity_error_m_s": 3.9893896308751565e-07
+    },
+    {
+      "dt_s": 0.005,
+      "max_velocity_error_m_s": 9.978335221635317e-08
+    }
+  ],
+  "min_sigma_m_rad": 0.08199264378368921,
+  "output_sha256": {
+    "motion.json": "47704b609a46bbbfbb04ef71e5fc47e183102ec96581b1986c44b14d02704463",
+    "diagnostics.png": "9ecf7775198bf52b486d1a570fa6a5d8bc67316c404c1a1fdf9af529104c3e14",
+    "trajectory.csv": "6c3fb6cf2f9e43d73e9281523f09c606d9212a68963c53f83fc31d9681a578fc",
+    "diagnostics.svg": "b8fc9b80e03d0bc397530ba8d97ab991d56779719c581322d197db2ffdd2e8f7"
+  }
+}

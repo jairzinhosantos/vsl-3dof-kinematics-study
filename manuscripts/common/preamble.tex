@@ -1,0 +1,29 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,es-nodecimaldot,es-noshorthands]{babel}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=24mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,booktabs,longtable,tabularx,array}
+\usepackage{graphicx,xcolor,enumitem,fancyhdr,tikz,pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,positioning,babel}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=apa,sorting=nyt]{biblatex}
+\addbibresource{references.bib}
+\definecolor{navy}{HTML}{17324D}
+\definecolor{teal}{HTML}{007F82}
+\definecolor{light}{HTML}{EDF3F6}
+\usepackage[hypertexnames=false,colorlinks=true,linkcolor=navy,citecolor=teal,urlcolor=teal]{hyperref}
+\usepackage{bookmark}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=*}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\textcolor{navy}{Robótica y Sistemas Autónomos}}
+\fancyhead[R]{\small Borrador v0.2}
+\fancyfoot[L]{\small 2026-2 | Revisión de Jairzinho}
+\fancyfoot[R]{\thepage}
+\newcommand{\pendiente}[1]{\par\noindent\textcolor{teal}{\textbf{Pendiente:} #1}\par}
+\newcommand{\nota}[1]{\par\noindent\colorbox{light}{\parbox{\dimexpr\linewidth-2\fboxsep}{#1}}\par}
+\newcommand{\portada}[2]{\begin{titlepage}\vspace*{17mm}{\Large\textcolor{teal}{TRABAJO PARCIAL · 2026-2}}\par\vspace{12mm}{\Huge\bfseries\color{navy}#1\par}\vspace{9mm}{\Large #2\par}\vfill{\large Robot antropomórfico de 3 GDL\par Robótica y Sistemas Autónomos\par}\vspace{10mm}Docente: Ing. Wilson Dennis Reyes Vásquez\par Fecha de preparación: 28 de octubre de 2026\par\vspace{8mm}\nota{Documento de trabajo para revisión. Los supuestos, pendientes y resultados preliminares no constituyen una entrega aprobada.}\end{titlepage}}

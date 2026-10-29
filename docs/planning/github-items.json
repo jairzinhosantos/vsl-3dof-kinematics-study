@@ -1,0 +1,68 @@
+[
+  {
+    "id": "foundation",
+    "issue_number": 1,
+    "url": "https://github.com/jairzinhosantos/vsl-3dof-kinematics-study/issues/1",
+    "item_id": "PVTI_lAHOBKjA8c4BpNtazhEW85o"
+  },
+  {
+    "id": "scope",
+    "issue_number": 2,
+    "url": "https://github.com/jairzinhosantos/vsl-3dof-kinematics-study/issues/2",
+    "item_id": "PVTI_lAHOBKjA8c4BpNtazhEW8-Q"
+  },
+  {
+    "id": "forward",
+    "issue_number": 3,
+    "url": "https://github.com/jairzinhosantos/vsl-3dof-kinematics-study/issues/3",
+    "item_id": "PVTI_lAHOBKjA8c4BpNtazhEW9Cc"
+  },
+  {
+    "id": "inverse",
+    "issue_number": 4,
+    "url": "https://github.com/jairzinhosantos/vsl-3dof-kinematics-study/issues/4",
+    "item_id": "PVTI_lAHOBKjA8c4BpNtazhEW9IQ"
+  },
+  {
+    "id": "differential",
+    "issue_number": 5,
+    "url": "https://github.com/jairzinhosantos/vsl-3dof-kinematics-study/issues/5",
+    "item_id": "PVTI_lAHOBKjA8c4BpNtazhEW9M0"
+  },
+  {
+    "id": "singularities",
+    "issue_number": 6,
+    "url": "https://github.com/jairzinhosantos/vsl-3dof-kinematics-study/issues/6",
+    "item_id": "PVTI_lAHOBKjA8c4BpNtazhEW9Ro"
+  },
+  {
+    "id": "control",
+    "issue_number": 7,
+    "url": "https://github.com/jairzinhosantos/vsl-3dof-kinematics-study/issues/7",
+    "item_id": "PVTI_lAHOBKjA8c4BpNtazhEW9XI"
+  },
+  {
+    "id": "simulation",
+    "issue_number": 8,
+    "url": "https://github.com/jairzinhosantos/vsl-3dof-kinematics-study/issues/8",
+    "item_id": "PVTI_lAHOBKjA8c4BpNtazhEW9bs"
+  },
+  {
+    "id": "paper-audit",
+    "issue_number": 9,
+    "url": "https://github.com/jairzinhosantos/vsl-3dof-kinematics-study/issues/9",
+    "item_id": "PVTI_lAHOBKjA8c4BpNtazhEW9h0"
+  },
+  {
+    "id": "report",
+    "issue_number": 10,
+    "url": "https://github.com/jairzinhosantos/vsl-3dof-kinematics-study/issues/10",
+    "item_id": "PVTI_lAHOBKjA8c4BpNtazhEW9nQ"
+  },
+  {
+    "id": "presentation",
+    "issue_number": 11,
+    "url": "https://github.com/jairzinhosantos/vsl-3dof-kinematics-study/issues/11",
+    "item_id": "PVTI_lAHOBKjA8c4BpNtazhEW9rw"
+  }
+]

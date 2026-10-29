@@ -1,0 +1,1 @@
+{"id":"exp-001","model":"nominal-rigid-rrr","lengths_m":[0.04,0.29,0.24],"duration_s":10.0,"dt_s":0.01,"convergence_dt_s":[0.02,0.01,0.005],"velocity_tolerance_m_s":0.00001,"seed":2026,"data_kind":"synthetic_prescribed_motion"}
