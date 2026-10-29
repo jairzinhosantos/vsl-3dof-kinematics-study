@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
-from robotics_study.model import forward, jacobian, joint_points, DEFAULT_LENGTHS
-from robotics_study.simulation import simulate
+from model import forward, jacobian, joint_points, DEFAULT_LENGTHS
+from motion import simulate
 
 @pytest.mark.parametrize('seed',[2026,42])
 def test_jacobians_against_independent_dh_and_finite_difference(seed):

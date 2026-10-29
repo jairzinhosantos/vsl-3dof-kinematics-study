@@ -7,10 +7,10 @@ import platform
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-PROJECTS = {'group-report': 'report'}
+PROJECTS = {'report': 'report'}
 
 def compile_projects(env):
-    out = ROOT / 'outputs/report'
+    out = ROOT / 'report/output'
     out.mkdir(parents=True, exist_ok=True)
     for name, rel in PROJECTS.items():
         project = ROOT / rel

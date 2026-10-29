@@ -1,4 +1,4 @@
-# Differential kinematics · borrador de Jairzinho
+# Differential kinematics
 
 Estado: **Review**. Este Markdown sustituye al borrador LaTeX como fuente activa de estudio. No está integrado automáticamente al informe grupal.
 
@@ -47,7 +47,7 @@ q=[30,40,-50] grados y qdot=[0.10,-0.20,0.15] rad/s producen aproximadamente:
 
 El ejemplo es un ensayo numérico elegido por el equipo, no una medición ni una configuración prescrita por el fabricante.
 
-## Interfaz con Renzo y Kenny
+## Relación con singularidades y control
 
 La factorización del determinante es:
 
@@ -55,7 +55,7 @@ $$\det J_v=-l_2l_3\rho\sin q_3.$$
 
 Las singularidades de posición aparecen con rho=0 o sin(q3)=0. En q=0 el rango de Jv es 2; en q=[0,pi/2,0] es 1. No implica pérdida del rango máximo de Jg. Para l2>0, si Jg u=0, la parte angular exige u1=0 y u2=-u3; la lineal restante tiene norma |u2|l2, por lo que u=0 y Jg tiene rango 3.
 
-Para Kenny, una interfaz posible es:
+Para el control de posición, una interfaz posible es:
 
 $$\dot q=J_v^\dagger(\dot p_d+K(p_d-p)).$$
 
@@ -65,4 +65,4 @@ Fuera de singularidades y con ejecución ideal, edot=-Ke. Cerca de singularidade
 
 [El experimento exp-001](../simulations/differential/README.md) prescribe q(t), calcula v=Jv qdot y contrasta con diferencias centrales. Los tests también comprueban derivación simbólica, orientación, rangos y entradas inválidas.
 
-La validación actual es matemática y numérica. No incluye flexibilidad, contacto, hardware ni medidas reales. El uso de Python está aceptado según aclaración de Jairzinho; ya no existe un bloqueo por ejecución MATLAB. Falta la revisión de Jairzinho, la coordinación con los compañeros y la aceptación docente del modelo rígido.
+La validación actual es matemática y numérica. No incluye flexibilidad, contacto, hardware ni medidas reales. El uso de Python está aceptado según aclaración de Jairzinho; ya no existe un bloqueo por ejecución MATLAB. Las decisiones de integración se registran en las notas internas.

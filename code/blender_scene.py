@@ -7,10 +7,10 @@ from mathutils import Vector
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
 parser.add_argument('--motion',default=str(ROOT/'simulations/differential/results/run-001/motion.json'))
-parser.add_argument('--output',default=str(ROOT/'outputs/blender'))
+parser.add_argument('--output')
 parser.add_argument('--render-preview',action='store_true')
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
-source=Path(args.motion);data=json.loads(source.read_text());out=Path(args.output);out.mkdir(parents=True,exist_ok=True)
+source=Path(args.motion);data=json.loads(source.read_text());out=Path(args.output) if args.output else source.parent/'blender';out.mkdir(parents=True,exist_ok=False)
 if data['units']!='m':raise ValueError('Se esperan metros')
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 scene=bpy.context.scene;scene.unit_settings.system='METRIC';scene.unit_settings.scale_length=1

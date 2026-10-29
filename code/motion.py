@@ -1,6 +1,6 @@
 """Movimiento articular prescrito; no implementa control en lazo cerrado."""
 import numpy as np
-from .model import forward, jacobian, joint_points, DEFAULT_LENGTHS
+from model import forward, jacobian, joint_points, DEFAULT_LENGTHS
 
 def prescribed_motion(t):
     t = np.asarray(t)

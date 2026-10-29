@@ -2,7 +2,7 @@
 from pathlib import Path
 import hashlib,json,re
 ROOT=Path(__file__).resolve().parents[1]
-IGNORE={'.git','.venv','_local','outputs','__pycache__','.pytest_cache','build'}
+IGNORE={'.git','.venv','_local','outputs','output','__pycache__','.pytest_cache','build'}
 errors=[];docs=0
 for p in ROOT.rglob('*.md'):
     if any(part in IGNORE for part in p.relative_to(ROOT).parts):continue
