@@ -10,3 +10,8 @@ dist/
 outputs/
 *.blend1
 *.blend2
+
+report/output/
+simulations/**/results/*/robot-motion.html
+simulations/**/results/*/blender/
+simulations/**/results/preview/

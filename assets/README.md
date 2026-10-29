@@ -1,5 +1,6 @@
 # Assets
 
-`branding/` recibe los recursos institucionales. `figures/` contiene vistas propias seleccionadas para estudiar o documentar, con fuente y procedencia.
+- `logos/`: logo UNI utilizado en la portada.
+- `figures/`: figuras seleccionadas para el informe.
 
-Los renders grandes, escenas Blender y videos regenerables permanecen en `outputs/`. Las figuras de resultados científicos se conservan junto al experimento que las produjo. No duplicar curvas en varias carpetas sin necesidad.
+Las curvas y escenas completas se conservan junto a su simulación. El logo no se genera ni modifica.

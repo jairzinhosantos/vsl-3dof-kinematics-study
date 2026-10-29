@@ -1,6 +1,6 @@
 # Shared model · robot RRR
 
-Estado: modelo rígido nominal propuesto; revisión de Josemanuel y aceptación docente pendientes.
+El modelo utiliza la geometría rígida nominal del robot descrito en el paper.
 
 Las tres articulaciones son rotacionales. Se adopta DH estándar `Rz(q) Tz(d) Tx(a) Rx(alpha)`, base fija, radianes, metros y vectores columna. Con q=0 los eslabones están alineados sobre +x a altura l1.
 

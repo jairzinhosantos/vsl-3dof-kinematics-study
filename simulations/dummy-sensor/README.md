@@ -17,3 +17,5 @@ Se calcula RMSE de la norma cartesiana. Su escala esperada es sqrt(3)×0.002≈0
 ![Error sintético diseñado](results/run-001/synthetic-error.png)
 
 El ruido gaussiano es una hipótesis de fixture. No representa calibración, sensores específicos, presión, flexibilidad ni distribución medida. Cualquier futuro conjunto real requiere procedencia y protocolo separados.
+
+Ejecución opcional: `uv run python run.py dummy --run-id run-002`.
