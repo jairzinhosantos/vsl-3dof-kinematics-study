@@ -4,7 +4,7 @@ Estado: **Review**. Este Markdown sustituye al borrador LaTeX como fuente activa
 
 ## Pregunta y fundamento
 
-¿Cómo se relacionan las velocidades de las tres articulaciones con la velocidad lineal y angular del efector? Se parte del [modelo común](model.md), derivado de la tabla DH y ecuaciones (6)-(8) del [paper](../papers/ramzy-2024/README.md). El concepto de Jacobiano se apoya en [Modern Robotics, capítulo 5](https://modernrobotics.northwestern.edu/nu-gm-book-resource/velocity-kinematics-and-statics/).
+¿Cómo se relacionan las velocidades de las tres articulaciones con la velocidad lineal y angular del efector? Se parte del [modelo común](model.md), derivado de la tabla DH y ecuaciones (6)-(8) del [paper](paper.md). El concepto de Jacobiano se apoya en [Modern Robotics, capítulo 5](https://modernrobotics.northwestern.edu/nu-gm-book-resource/velocity-kinematics-and-statics/).
 
 ## Jacobiano de posición
 
@@ -63,6 +63,6 @@ Fuera de singularidades y con ejecución ideal, edot=-Ke. Cerca de singularidade
 
 ## Evidencia y límites
 
-[El experimento exp-001](../../experiments/exp-001-differential/README.md) prescribe q(t), calcula v=Jv qdot y contrasta con diferencias centrales. Los tests también comprueban derivación simbólica, orientación, rangos y entradas inválidas.
+[El experimento exp-001](../simulations/differential/README.md) prescribe q(t), calcula v=Jv qdot y contrasta con diferencias centrales. Los tests también comprueban derivación simbólica, orientación, rangos y entradas inválidas.
 
 La validación actual es matemática y numérica. No incluye flexibilidad, contacto, hardware ni medidas reales. El uso de Python está aceptado según aclaración de Jairzinho; ya no existe un bloqueo por ejecución MATLAB. Falta la revisión de Jairzinho, la coordinación con los compañeros y la aceptación docente del modelo rígido.

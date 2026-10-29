@@ -6,7 +6,7 @@ from mathutils import Vector
 
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
-parser.add_argument('--motion',default=str(ROOT/'experiments/exp-001-differential/results/run-001/motion.json'))
+parser.add_argument('--motion',default=str(ROOT/'simulations/differential/results/run-001/motion.json'))
 parser.add_argument('--output',default=str(ROOT/'outputs/blender'))
 parser.add_argument('--render-preview',action='store_true')
 args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])

@@ -22,7 +22,7 @@ def provenance(config,path):
 
 def run(run_id):
     if not run_id.replace('-','').replace('_','').isalnum():raise ValueError('run-id inválido')
-    cfg_paths=[ROOT/'experiments'/name/'config.json' for name in ['exp-001-differential','exp-002-dummy-sensor']]
+    cfg_paths=[ROOT/'simulations'/name/'config.json' for name in ['differential','dummy-sensor']]
     for p in cfg_paths:
         if (p.parent/'results'/run_id).exists():raise FileExistsError('Use otro run-id; se conserva la evidencia existente')
     out=cfg_paths[0].parent/'results'/run_id;out.mkdir(parents=True)

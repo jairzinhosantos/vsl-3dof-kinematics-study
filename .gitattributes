@@ -1,4 +1,4 @@
 # Conservar bytes originales de las evidencias: CSV puede usar CRLF y SVG contiene espacios del generador.
-experiments/**/results/** -text -whitespace linguist-generated=true
+simulations/**/results/** -text -whitespace linguist-generated=true
 *.png binary
 *.blend binary

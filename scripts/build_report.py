@@ -7,21 +7,19 @@ import platform
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
-PROJECTS = {'group-report': 'manuscripts/report'}
+PROJECTS = {'group-report': 'report'}
 
 def compile_projects(env):
     out = ROOT / 'outputs/report'
     out.mkdir(parents=True, exist_ok=True)
     for name, rel in PROJECTS.items():
         project = ROOT / rel
-        for filename in ['preamble.tex', 'references.bib']:
-            shutil.copy2(ROOT/'manuscripts/common'/filename, project/filename)
         build = project/'build'
         build.mkdir(exist_ok=True)
-        with (build/'compilacion.log').open('w') as log:
+        with (build/'compilation.log').open('w') as log:
             result = subprocess.run(['latexmk','-g','-pdf','-interaction=nonstopmode','-halt-on-error','-outdir=build','main.tex'],cwd=project,stdout=log,stderr=subprocess.STDOUT,env=env)
         if result.returncode:
-            raise RuntimeError(f'Fallo LaTeX: {build / "compilacion.log"}')
+            raise RuntimeError(f'Fallo LaTeX: {build / "compilation.log"}')
         shutil.copy2(build/'main.pdf', out/(name+'.pdf'))
         print(f'Exportado: {name}.pdf', flush=True)
 

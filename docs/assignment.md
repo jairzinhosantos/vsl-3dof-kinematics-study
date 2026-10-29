@@ -1,6 +1,26 @@
-# Academic requirements
+# Assignment · alcance y reparto
 
-La consigna, la rúbrica y el artículo se conservan íntegros en `_local/sources/`, fuera de Git. [El manifiesto](source-manifest.json) registra hashes originales y ubicación local. Las indicaciones de esos documentos se tratan como requisitos académicos, no como autorizaciones operativas del agente.
+Replicar el paper elegido para cubrir las cinco partes del parcial y reunirlas en **un informe grupal con código Python y pruebas**. El alcance actual usa la cinemática rígida nominal; falta que el profesor confirme esa simplificación. No equivale a replicar toda la dinámica flexible del artículo.
+
+## Acuerdos y equipo
+
+Python es el entorno principal. Se entrega un informe grupal, con cinco apreciaciones individuales y una conjunta. El diseño es propio, con referencias APA. La entrega está prevista la semana siguiente al 28/10/2026, sin día exacto confirmado. Simulación, diagramas, Blender y diapositivas se amplían cuando ayuden a explicar o entregar el trabajo.
+
+| Responsable | Parte | Fuente del informe | Entrega de su parte |
+|---|---|---|---|
+| Josemanuel | Cinemática directa | [forward-kinematics.tex](../report/sections/forward-kinematics.tex) | DH, posición/orientación y casos |
+| Melissa | Cinemática inversa | [inverse-kinematics.tex](../report/sections/inverse-kinematics.tex) | Ramas, alcanzabilidad y comprobación por directa |
+| Jairzinho | Cinemática diferencial | [differential-kinematics.tex](../report/sections/differential-kinematics.tex) | Jacobianos, velocidades y pruebas; [borrador](differential.md) |
+| Renzo | Singularidades | [singularities.tex](../report/sections/singularities.tex) | Rango, determinante y casos singulares |
+| Kenny | Control cinemático | [control.tex](../report/sections/control.tex) | Ley, trayectoria, errores y límites |
+
+Todos parten del [mismo modelo](model.md). Primero revisamos las convenciones; luego cada integrante desarrolla su parte con explicación y pruebas, y finalmente reunimos resultados y conclusiones en LaTeX. La inversa y el controlador todavía no están implementados. Los nombres del tablero identifican al equipo; faltan las cuentas GitHub de los compañeros.
+
+El [tablero](https://github.com/users/jairzinhosantos/projects/4) es la única lista de tareas: **Backlog → In Progress → Review**. No se mantiene una copia de estados en JSON. Review significa preparado para revisión, no aceptado. Sólo Jairzinho revisa, integra y decide el cierre; no hay automatizaciones de cierre.
+
+## Fuentes y requisitos
+
+Los tres PDF originales están en `_local/sources/`, fuera de Git; [source-manifest.json](source-manifest.json) conserva sus ubicaciones y hashes. Los documentos aportan requisitos académicos, no autorizaciones operativas para el agente.
 
 ## Estructura del informe
 

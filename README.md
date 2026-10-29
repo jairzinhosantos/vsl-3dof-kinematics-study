@@ -1,42 +1,35 @@
 # VSL 3-DOF Kinematics Study · MIA UNI Midterm
 
-Estudio grupal de un robot antropomórfico de tres grados de libertad, basado en Ramzy, Hammad y Maged (2024). Se desarrolla la cinemática nominal en Python y se construye una visualización 3D reproducible.
+Replicación del paper de Ramzy et al. (2024) para el parcial de Robótica: cada integrante desarrolla su parte, la prueba en Python y la reunimos en un informe LaTeX. El alcance actual es la **cinemática rígida nominal**, pendiente de aceptación docente; todavía no reproduce la dinámica flexible ni los ensayos físicos del artículo.
 
-**Estado: preparación en Review.** La aceptación docente del alcance rígido está pendiente. La evidencia inicial verifica consistencia matemática; no reproduce la dinámica flexible ni ensayos físicos del artículo.
+[Tablero del equipo](https://github.com/users/jairzinhosantos/projects/4) · [Reparto y requisitos](docs/assignment.md) · [Paper elegido](docs/paper.md) · [Borrador diferencial](docs/differential.md)
 
-[Tablero del equipo](https://github.com/users/jairzinhosantos/projects/4) · [Plan](docs/study-plan.md) · [Acuerdos](docs/project-charter.md) · [Mapa del estudio](docs/study-map.md)
+## Estructura
 
-## Empezar por aquí
+```text
+docs/          Notas del paper, requisitos, modelo y borradores
+report/        Informe LaTeX: una sección por cada parte del equipo
+src/           Modelo y cálculo Python compartidos
+tests/         Pruebas del modelo
+scripts/       Ejecutar simulaciones, exportar PDF y generar Blender
+simulations/   Configuraciones, resultados y gráficas de los casos
+assets/        Logo y figuras para el informe
+```
 
-1. [Qué pide el parcial y qué ya se aclaró](docs/academic/requirements.md).
-2. [Lectura crítica del paper](research/papers/ramzy-2024/README.md).
-3. [Modelo común y convención DH](research/robot-3r/model.md).
-4. [Cinemática diferencial: borrador de Jairzinho](research/robot-3r/differential.md).
-5. [Experimento de velocidades](experiments/exp-001-differential/README.md) y [fixture de datos dummy](experiments/exp-002-dummy-sensor/README.md).
-6. [Simulación y Blender](docs/simulation-stack.md); [qué falta y quién lo trabaja](docs/study-plan.md).
+`outputs/` contiene archivos regenerables, como HTML, PDF y escenas Blender. `_local/` conserva los PDF originales y respaldos. Ambas son carpetas locales excluidas de Git. Los nombres técnicos están en inglés y el contenido explicativo en español.
 
-## Cómo se organiza
+## Cómo trabajamos
 
-| Carpeta | Responsabilidad |
-|---|---|
-| `docs/` | Alcance, requisitos, plan, decisiones y funcionamiento del equipo |
-| `research/` | Lecturas y desarrollo matemático; Markdown como base de estudio |
-| `src/robotics_study/` | Modelo Python compartido entre los cinco temas |
-| `experiments/` | Una carpeta por protocolo, con configuración y resultados identificados |
-| `tests/` | Comprobaciones numéricas, simbólicas y de entradas |
-| `scripts/` | Ejecución, gráficas, Blender, validación y exportación opcional |
-| `assets/` | Logo, recursos visuales y figuras propias |
-| `manuscripts/` | Plantilla LaTeX del informe grupal para la etapa de integración |
-| `presentations/` | Guion de exposición; PPT sólo cuando se necesite |
-| `adapters/matlab/` | Código anterior opcional; no es el motor principal |
-| `_local/` | Originales institucionales e historia local, excluidos de Git |
-| `outputs/` | HTML, escenas `.blend` y exportaciones regenerables, excluidos de Git |
+1. Partimos del [modelo común](docs/model.md) y las dimensiones del paper.
+2. Josemanuel desarrolla directa; Melissa, inversa; Jairzinho, diferencial; Renzo, singularidades; Kenny, control. Cada parte incluye explicación, código y pruebas cuando corresponda.
+3. Revisamos los aportes y los reunimos en [report/main.tex](report/main.tex), con las apreciaciones individuales y una conjunta.
+4. Exportamos el PDF y añadimos simulaciones o material visual útil para exponer. No se reserva una estructura para presentaciones ni un framework adicional antes de necesitarlos.
 
-Los nombres técnicos están en inglés y las explicaciones en español. Se adaptó la organización por evidencia de Thinking Harness; no se copió su alcance ni se creó una infraestructura de investigación innecesaria.
+El tablero es la única lista de tareas: **Backlog → In Progress → Review**. No se duplican estados en archivos locales. Review significa listo para revisión; sólo Jairzinho decide integrar PRs y cerrar tareas. El agente no fusiona PRs ni automatiza cierres. Las propuestas van hacia `develop`; `main` y `develop` conservan el arranque administrativo mientras se revisa el primer PR.
 
 ## Ejecutar
 
-Se requiere Python 3.11+ y [uv](https://docs.astral.sh/uv/). Las versiones resueltas están fijadas en `uv.lock`.
+Con Python 3.11+ y [uv](https://docs.astral.sh/uv/):
 
 ```sh
 uv sync --locked
@@ -45,28 +38,20 @@ uv run python scripts/check_repository.py
 uv run python scripts/run_experiments.py --run-id run-002
 ```
 
-`run-001` conserva la ejecución inicial. Cada nueva ejecución usa otro identificador. El script genera resultados, manifiestos, curvas y `outputs/<run-id>/robot-motion.html`, que funciona sin conexión y permite reproducir o desplazar la animación 3D.
+Usar otro identificador si ya existe. Se conservan la [simulación diferencial](simulations/differential/README.md) y el [caso dummy opcional](simulations/dummy-sensor/README.md). Los datos dummy son sintéticos y no sustituyen mediciones del paper.
 
-Para Blender, usar el ejecutable local (en macOS está dentro de `Blender.app`):
+Abrir `outputs/<run-id>/robot-motion.html` para ver el movimiento. La [guía de simulación](docs/simulation.md) explica cómo generar la escena Blender a partir de esas mismas posiciones. No hace falta Blender para calcular ni ejecutar las pruebas.
+
+Para exportar el informe, con TeX Live/MacTeX instalado:
 
 ```sh
-blender --background --factory-startup --python-exit-code 1 \
-  --python scripts/build_blender_scene.py -- --render-preview
+uv run python scripts/build_report.py
 ```
 
-El script consume `motion.json` de `run-001` y crea una escena animada y un render en `outputs/blender/`. Puede usarse `--motion` para otra ejecución. El modelo geométrico es esquemático, no una reconstrucción CAD del prototipo físico.
+La salida es `outputs/report/group-report.pdf`. El logo se coloca en [assets/branding/](assets/branding/README.md).
 
-## Resultados iniciales
+## Qué tenemos y qué falta
 
-- 17 pruebas Python aprobadas: DH, Jacobianos lineal/angular, rangos, derivación simbólica, unidades y convergencia.
-- Error máximo de velocidad de aproximadamente `3.99e-7 m/s` con paso de `0.01 s`.
-- Datos dummy: 500 muestras con ruido gaussiano diseñado de `2 mm` por eje; no son mediciones reales.
-- Falta completar inversa, estudio de singularidades de Renzo, control de Kenny e integración grupal.
+Tenemos modelo nominal, borrador diferencial, pruebas, curvas, visor 3D y escena Blender. Falta completar los aportes de los cinco, especialmente inversa y control, revisar las discrepancias del paper e integrar el informe. Las consultas sobre alcance rígido, puntuación por construcción y fecha están reunidas en [assignment.md](docs/assignment.md).
 
-## Informe y revisión
-
-El trabajo es grupal. Se conservan cinco espacios de apreciación individual y uno conjunto. No existe una plantilla adicional impuesta; se siguen la estructura de la consigna y referencias APA. Entrega prevista la próxima semana, sin día exacto confirmado.
-
-El logo se puede colocar en [`assets/branding/`](assets/branding/README.md). La plantilla LaTeX no incorpora automáticamente el borrador diferencial. Markdown sirve para comprender e iterar; PDF y diapositivas se exportan cuando sean útiles.
-
-Las ramas de trabajo abren PR hacia `develop`; `main` conserva la base aceptada. El bootstrap sólo inicializa el repositorio. **El agente llega a Review. Sólo Jairzinho integra PRs, cierra issues y mueve tarjetas a Done.** Las automatizaciones de estado del tablero están desactivadas.
+Se conserva el trabajo útil de la versión anterior; se retiraron capas administrativas, adaptación MATLAB, copias comunes de LaTeX y carpetas anticipadas. El historial permanece en Git y en `_local/history/before-simplification/`.

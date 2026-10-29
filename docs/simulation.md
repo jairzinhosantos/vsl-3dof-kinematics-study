@@ -1,4 +1,4 @@
-# Simulation stack
+# Simulation · uso de Python y Blender
 
 ## Capas elegidas
 

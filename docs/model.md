@@ -10,7 +10,7 @@ Las tres articulaciones son rotacionales. Se adopta DH estándar `Rz(q) Tz(d) Tx
 | 2 | q2 | 0 | l2 | 0 |
 | 3 | q3 | 0 | l3 | 0 |
 
-Longitudes: l1=0.04 m, l2=0.29 m, l3=0.24 m; [paper](../papers/ramzy-2024/README.md), tabla 2.
+Longitudes: l1=0.04 m, l2=0.29 m, l3=0.24 m; [paper](paper.md), tabla 2.
 
 Definiendo una coordenada radial con signo y una altura relativa:
 

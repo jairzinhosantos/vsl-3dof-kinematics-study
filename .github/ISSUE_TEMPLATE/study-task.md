@@ -1,18 +1,12 @@
 ---
-name: Study task
-about: Lectura, modelado, experimento o entrega con evidencia
+name: Project task
+about: Una parte del parcial o una entrega concreta
 ---
-## Objetivo y responsable
+## Qué hay que hacer y quién lo hace
 
-## Fuentes y dependencias
+## Para llevarlo a Review
 
-## Protocolo o trabajo acotado
+- [ ] Explicación y archivos correspondientes.
+- [ ] Pruebas o revisión visual cuando corresponda.
 
-## Criterios para Review
-
-- [ ] Explicación, evidencia y limitaciones.
-- [ ] Pruebas o revisión visual relevantes.
-
-## Revisión humana
-
-El agente llega a Review. Sólo Jairzinho decide integrar, cerrar y mover a Done.
+Backlog → In Progress → Review. Sólo Jairzinho acepta, integra y cierra tareas.
