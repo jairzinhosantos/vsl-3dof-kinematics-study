@@ -1,9 +1,14 @@
-\subsection{Resultados integrados y discusión}
-\begin{center}\begin{tabularx}{\linewidth}{@{}lXX@{}}\toprule
-Bloque & Métrica sugerida & Evidencia pendiente\\\midrule
-Directa & Residuo DH frente a fórmula & Figuras y registro Python\\
-Inversa & $\|p(q)-p_d\|$ & Ramas y casos inalcanzables\\
-Diferencial & $\|J_v\dot q-\dot p_{FD}\|$ & Curvas y convergencia temporal\\
-Singularidades & $\sigma_{\min}$ y rango & Casos regulares y singulares\\
-Control & RMSE, máximo error, $\max|\dot q_i|$ & Trayectoria y sensibilidad\\\bottomrule\end{tabularx}\end{center}
-\pendiente{Se presentarán resultados ejecutados, método de cálculo, versiones y límites. Se distinguirá la evidencia propia de los datos del paper y se analizará la discrepancia de su tabla 3.}
+\subsection{Resultados integrados}
+El conjunto de comprobaciones contiene 29 pruebas aprobadas. Contrasta métodos independientes, casos regulares y singulares, alcanzabilidad y refinamiento temporal. Los resultados preparados están en \texttt{simulations/course/results/run-001/}; la comprobación diferencial original permanece en su propia carpeta.
+\begin{center}\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+Prueba & Resultado\\\midrule
+Geométrico frente a DH & Residuo de posición $2.78\times10^{-17}$ m en el ejemplo\\
+MTH frente a DH & Diferencia máxima $8.33\times10^{-17}$ en $M_{03}$\\
+Inversa, ambas ramas & Residuo máximo $1.50\times10^{-16}$ m en el ejemplo\\
+Velocidad diferencial & Error máximo $3.99\times10^{-7}$ m/s, paso 0.01 s\\
+Posición fija & Error final $9.57\times10^{-6}$ m a los 10 s\\
+Seguimiento & RMSE 10--20 s de $2.67\times10^{-4}$ m\\
+Inicio singular & Error radial de 0.03 m sin reducción\\\bottomrule\end{tabularx}\end{center}
+Las pruebas de directa e inversa cubren además 120 configuraciones aleatorias con semilla 2026. Las cifras cercanas a precisión de máquina indican consistencia matemática, no exactitud mecánica. Los datos dummy constituyen una prueba auxiliar de procesamiento y no intervienen en estas conclusiones.
+
+El contraste con la tabla 3 del paper sigue abierto: su primera fila presenta diferencias respecto de las dimensiones publicadas. No se reajustan longitudes para ocultar esa discrepancia. Las limitaciones del modelo se conservan al interpretar los resultados.

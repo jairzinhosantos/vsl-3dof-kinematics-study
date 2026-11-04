@@ -16,7 +16,7 @@ def parameters(q, lengths):
         raise ValueError('Las longitudes deben ser positivas')
     return q, lengths
 
-def dh(theta, a, d, alpha):
+def dh(theta, d, a, alpha):
     """DH estándar: Rz(theta) Tz(d) Tx(a) Rx(alpha)."""
     c, s, ca, sa = np.cos(theta), np.sin(theta), np.cos(alpha), np.sin(alpha)
     return np.array([[c,-s*ca,s*sa,a*c], [s,c*ca,-c*sa,a*s],
@@ -28,7 +28,7 @@ def forward(q, lengths=DEFAULT_LENGTHS):
     transform = np.eye(4); origins = []; axes = []
     for theta,a,d,alpha in zip(q,[0,*lengths[1:]],[lengths[0],0,0],[np.pi/2,0,0]):
         origins.append(transform[:3,3].copy()); axes.append(transform[:3,2].copy())
-        transform = transform @ dh(theta,a,d,alpha)
+        transform = transform @ dh(theta,d,a,alpha)
     return transform, np.array(origins).T, np.array(axes).T
 
 def joint_points(q, lengths=DEFAULT_LENGTHS):

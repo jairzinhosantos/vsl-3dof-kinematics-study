@@ -1,13 +1,9 @@
 # Report
 
-[main.tex](main.tex) reúne introducción, resumen del paper, desarrollo, resultados, conclusiones por tema y general, recomendaciones, referencias y anexos. Los temas tienen archivos separados dentro de `sections/`; no llevan nombres de integrantes.
+**[Informe PDF listo para consultar](output/report.pdf)** · [Fuente principal](main.tex)
 
-El PDF se genera desde la raíz del repositorio:
+El borrador 04 reúne introducción, resumen del paper, desarrollo por métodos, resultados, conclusiones por tema y general, recomendaciones, referencias y anexos. Las secciones se mantienen en `sections/`, sin nombres de integrantes en los apartados.
 
-```sh
-uv run python run.py report
-```
+El PDF se versiona junto con sus fuentes. `output/build.json` registra sus hashes; las comprobaciones detectan fuentes modificadas sin recompilar. La portada utiliza el [logo UNI](../assets/logos/uni-logo.png).
 
-Salida: `report/output/report.pdf`. Requiere TeX Live/MacTeX con `latexmk`, `pdflatex` y `biber`. La portada utiliza [uni-logo.png](../assets/logos/uni-logo.png).
-
-El [borrador diferencial](../docs/differential.md) continúa separado hasta revisión. La plantilla distingue los apartados aún pendientes de los resultados disponibles.
+La compilación sólo es necesaria al editar el documento: [guía de reproducción](../docs/reproduce.md). Esta versión contiene resultados numéricos para revisión; no presenta ensayos físicos.

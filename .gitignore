@@ -11,7 +11,13 @@ outputs/
 *.blend1
 *.blend2
 
-report/output/
+report/output/*
+!report/output/report.pdf
+!report/output/build.json
 simulations/**/results/*/robot-motion.html
 simulations/**/results/*/blender/
 simulations/**/results/preview/
+
+# Vistas preparadas que acompañan la entrega revisable.
+!simulations/differential/results/run-001/robot-motion.html
+!simulations/differential/results/run-001/blender/

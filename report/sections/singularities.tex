@@ -1,2 +1,14 @@
 \subsection{Singularidades}
-\pendiente{El análisis incluirá el determinante, el rango y los valores singulares del Jacobiano de posición. Se estudiarán la alineación de eslabones y el eje de base, distinguiendo estas singularidades del rango del Jacobiano geométrico completo.}
+Como en clase, se inicia por el determinante del Jacobiano de la tarea de posición:
+\begin{equation}
+\det J_L=-l_2l_3\rho\sin\theta_3.
+\end{equation}
+Con longitudes positivas, se pierde rango cuando $\sin\theta_3=0$ (eslabones alineados) o $\rho=0$ (efector sobre el eje de la base). La combinación puede reducir el rango aún más.
+\begin{center}\begin{tabular}{lcc}\toprule
+Configuración & Rango de $J_L$ & Rango de $J$\\\midrule
+$(30,40,-50)^\circ$ & 3 & 3\\
+$(0,0,0)$ & 2 & 3\\
+$(0,\pi/2,0)$ & 1 & 3\\\bottomrule\end{tabular}\end{center}
+La matriz $J$ es rectangular, por lo que no se calcula su determinante. Conserva rango de columna 3 para $l_2>0$: $J_\omega u=0$ exige $u_1=0$ y $u_2=-u_3$; la parte lineal restante tiene norma $l_2|u_2|$ y obliga a $u=0$. Ello no permite imponer seis velocidades independientes con sólo tres articulaciones.
+
+El menor valor singular de $J_L$ complementa el determinante para evaluar cercanía a una singularidad. La pseudoinversa no recupera una dirección cartesiana ausente: desde $q=0$, un objetivo radial en $(0.50,0,0.04)$ m mantiene un error de 0.03 m con la ley cinemática estudiada. Este caso se conserva como prueba de limitación, no como éxito de control.

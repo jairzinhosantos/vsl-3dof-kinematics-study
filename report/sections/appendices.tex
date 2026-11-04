@@ -1,6 +1,15 @@
-\section{Esquemas del robot}
-\pendiente{Se incorporarán esquemas propios con articulaciones, longitudes, ejes y marcos DH.}
-\section{Código y reproducibilidad}
-La ejecución se organiza mediante \texttt{run.py}: pruebas, simulación, visualización Blender opcional y exportación del informe. El código numérico se encuentra en \texttt{code/}; los parámetros y resultados, en \texttt{simulations/}. El README detalla los comandos y el orden de ejecución.
-\section{Pruebas y observaciones}
-\pendiente{Se reunirán las comprobaciones del modelo, las métricas de simulación y las discrepancias identificadas en el artículo.}
+\section{Esquema de marcos y relación entre métodos}
+\begin{center}\begin{tikzpicture}[>=Stealth,scale=.9]
+\coordinate (O0) at (0,0);\coordinate (O1) at (0,1.2);\coordinate (O2) at (2.2,2.5);\coordinate (O3) at (4.4,2);
+\draw[very thick,navy] (O0)--node[left]{$l_1$}(O1)--node[above left]{$l_2$}(O2)--node[above]{$l_3$}(O3);
+\foreach \p/\n in {O0/0,O1/1,O2/2,O3/3}{\fill (\p) circle(2pt);\node[below right] at (\p){$o_{\n}$};}
+\draw[->] (O0)--++(0,1) node[left]{$z_0$};\draw[->] (O0)--++(1,0) node[below]{$x_0$};
+\draw[->,wine] (O1)--++(1,0) node[right]{$x_1$};
+\draw[->,wine] (O2)--++(.8,.48) node[above right]{$x_2$};
+\draw[->,wine] (O3)--++(.85,-.19) node[right]{$x_3$};
+\node[left] at (-.05,1.4){$z_1\odot$};\node[above] at (2.2,2.6){$z_2\odot$};
+\end{tikzpicture}\end{center}
+Vista esquemática del plano radial para $\theta_1=0$: $z_1$ y $z_2$ apuntan hacia fuera de la página ($-y_0$). El eje $x_1$ apunta radialmente; $x_2$ sigue la dirección del primer eslabón móvil y $x_3$ la del segundo. El efector está en $o_3$. La orientación de la base se recupera mediante $R_z(\theta_1)$.
+
+\section{Archivos y reproducibilidad}
+El PDF preparado se entrega junto a \texttt{main.tex}, sus secciones, bibliografía y figuras. El código se encuentra en \texttt{code/}; los parámetros, tablas y gráficas en \texttt{simulations/}. La guía \texttt{docs/reproduce.md} explica la reproducción opcional de los casos. Cada resultado conserva configuración y hashes. Los materiales docentes originales permanecen en \texttt{assets/utility/}, separados del código Python.

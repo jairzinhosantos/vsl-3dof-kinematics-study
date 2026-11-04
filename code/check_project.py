@@ -21,5 +21,15 @@ for p in ROOT.glob('.github/workflows/*'):
     text=p.read_text()
     if 'contents: read' not in text:errors.append('CI debe declarar permisos de sólo lectura')
     if re.search(r'(issues: write|pull-requests: write|auto-merge|gh issue close)',text):errors.append('Automatización incompatible con revisión humana')
+# El repositorio entrega el PDF listo; el CI comprueba que corresponde a sus fuentes.
+build_path=ROOT/'report/output/build.json'
+if not build_path.exists():
+    errors.append('Falta el PDF preparado y su registro de compilación')
+else:
+    record=json.loads(build_path.read_text())
+    for rel,digest in {record['pdf']:record['pdf_sha256'],**record['source_sha256']}.items():
+        p=ROOT/rel
+        if not p.exists() or hashlib.sha256(p.read_bytes()).hexdigest()!=digest:
+            errors.append(f'PDF o fuente modificada sin recompilar: {rel}')
 if errors:raise SystemExit('\n'.join(errors))
 print(f'OK: {docs} Markdown; enlaces locales, hashes de evidencia y política de revisión.')
