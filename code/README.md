@@ -11,6 +11,9 @@ El código respalda el [informe preparado](../report/output/report.pdf) y los [r
 | `simulate.py` | Datos, curvas y visor HTML del caso diferencial |
 | `blender_scene.py` | Escena Blender a partir de `motion.json` |
 | `tests/` | Comprobaciones matemáticas y numéricas |
+| `check_notebooks.py` | Ejecutar notebooks desde cero y guardar salidas opcionalmente |
 | `check_project.py` | Enlaces, integridad de resultados y correspondencia del PDF |
 
 La compilación del documento pertenece a `report/build.py`. [Comandos opcionales](../docs/reproduce.md).
+
+Para estudiar las ecuaciones paso a paso se utilizan los [notebooks explicados](../notebooks/README.md), autocontenidos y con resultados guardados.

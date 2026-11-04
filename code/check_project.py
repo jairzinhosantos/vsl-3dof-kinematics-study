@@ -17,6 +17,23 @@ for p in ROOT.glob('simulations/*/results/*/manifest.json'):
     for name,digest in d.get('output_sha256',{}).items():
         artifact=p.parent/name
         if not artifact.exists() or hashlib.sha256(artifact.read_bytes()).hexdigest()!=digest:errors.append(f'Evidencia alterada: {artifact}')
+# Los notebooks publicados deben poder leerse con salidas completas y sin errores.
+for p in ROOT.glob('notebooks/*/study.ipynb'):
+    notebook = json.loads(p.read_text())
+    cells = [cell for cell in notebook['cells'] if cell['cell_type'] == 'code']
+    counts = [cell.get('execution_count') for cell in cells]
+    if counts != list(range(1, len(cells) + 1)):
+        errors.append(f'Notebook sin ejecución completa y ordenada: {p.relative_to(ROOT)}')
+    if any(output.get('output_type') == 'error' for cell in cells for output in cell.get('outputs', [])):
+        errors.append(f'Notebook con errores guardados: {p.relative_to(ROOT)}')
+    for cell in notebook['cells']:
+        if cell['cell_type'] != 'markdown':continue
+        source = cell['source']
+        if isinstance(source, list):source = ''.join(source)
+        for raw in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)', source):
+            target = raw.split('#')[0].strip('<>')
+            if target and not re.match(r'^[a-zA-Z]+:', target) and not (p.parent/target).exists():
+                errors.append(f'Enlace roto en notebook: {p.relative_to(ROOT)} -> {target}')
 for p in ROOT.glob('.github/workflows/*'):
     text=p.read_text()
     if 'contents: read' not in text:errors.append('CI debe declarar permisos de sólo lectura')
