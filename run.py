@@ -11,6 +11,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('test', help='Comprueba el modelo y los archivos del proyecto')
+    study = commands.add_parser('notebooks', help='Ejecuta los notebooks con kernels nuevos')
+    study.add_argument('--save', action='store_true', help='Guarda las salidas para lectura en GitHub')
     for name, help_text in [('simulate','Simula el movimiento del robot'), ('course','Ejecuta las comprobaciones alineadas al curso'), ('dummy','Genera datos de sensor sintéticos (opcional)'), ('blender','Visualiza una simulación existente en Blender')]:
         cmd = commands.add_parser(name, help=help_text)
         cmd.add_argument('--run-id', required=True, help='Identificador de la ejecución, por ejemplo run-003')
@@ -23,6 +25,8 @@ def main():
         calls = [[sys.executable,'code/simulate.py','--case',case,'--run-id',args.run_id]]
     elif args.command == 'course':
         calls = [[sys.executable,'code/course_demo.py','--run-id',args.run_id]]
+    elif args.command == 'notebooks':
+        calls = [[sys.executable,'code/check_notebooks.py'] + (['--save'] if args.save else [])]
     elif args.command == 'report':
         calls = [[sys.executable,'report/build.py']]
     else:

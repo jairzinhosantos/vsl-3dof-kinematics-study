@@ -21,3 +21,5 @@ simulations/**/results/preview/
 # Vistas preparadas que acompañan la entrega revisable.
 !simulations/differential/results/run-001/robot-motion.html
 !simulations/differential/results/run-001/blender/
+
+.ipynb_checkpoints/

@@ -2,6 +2,8 @@
 
 Nota de estudio del desarrollo incluido en el [borrador del informe](../report/output/report.pdf), preparado para revisión. Se emplea la notación de las semanas 6 y 7: `JL`, `Jw` y `J=[JL;Jw]`; véase la [correspondencia con las clases](course-alignment.md).
 
+La [guía paso a paso](../notebooks/differential-kinematics/README.md) desarrolla los fundamentos y enlaza el notebook ejecutado.
+
 ## Pregunta y fundamento
 
 ¿Cómo se relacionan las velocidades de las tres articulaciones con la velocidad lineal y angular del efector? Se parte del [modelo común](model.md), derivado de la tabla DH y ecuaciones (6)-(8) del [paper](paper.md). El concepto de Jacobiano se apoya en [Modern Robotics, capítulo 5](https://modernrobotics.northwestern.edu/nu-gm-book-resource/velocity-kinematics-and-statics/).

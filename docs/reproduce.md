@@ -65,3 +65,7 @@ uv run python run.py test
 Se suben las fuentes modificadas, `report/output/report.pdf` y `report/output/build.json` en el mismo PR. Los archivos auxiliares de compilación permanecen ignorados. El CI comprueba el PDF preparado sin necesitar LaTeX.
 
 Ayuda de comandos: `uv run python run.py --help`.
+
+## Estudiar con notebooks
+
+La [guía de estudio](../notebooks/README.md) permite leer las salidas en GitHub. Para abrirlos localmente: `uv run --group study jupyter lab notebooks`. Para comprobarlos desde cero: `uv run --group study python run.py notebooks`. El grupo `study` contiene Jupyter y se instala con `uv sync --locked --group study`.
