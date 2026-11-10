@@ -25,9 +25,12 @@ def run(run_id):
     out=cfgpath.parent/'results'/run_id;out.mkdir(parents=True,exist_ok=False)
     q0=np.deg2rad(cfg['example_q_deg']);qf=np.deg2rad(cfg['final_q_deg'])
     T=forward(q0,L)[0];M=homogeneous(q0,L);p=geometric_position(q0,L)
-    inverse=inverse_position(p,L)
-    residuals=[float(np.linalg.norm(forward(q,L)[0][:3,3]-p)) for q in inverse]
-    csvfile(out/'inverse.csv',['q1_rad','q2_rad','q3_rad','residual_m'],np.column_stack([inverse,residuals]))
+    inverse = inverse_position(p, L)
+    dh_residuals = [float(np.linalg.norm(forward(q, L)[0][:3, 3] - p)) for q in inverse]
+    trig_residuals = [float(np.linalg.norm(geometric_position(q, L) - p)) for q in inverse]
+    columns = ['q1_rad', 'q2_rad', 'q3_rad', 'residual_m', 'trig_residual_m']
+    csvfile(out/'inverse.csv', columns, np.column_stack([inverse, dh_residuals, trig_residuals]))
+    inverse_ok = len(inverse) > 0 and max(dh_residuals + trig_residuals) < 1e-12
     grid=np.meshgrid(*[np.deg2rad(np.linspace(*limits,cfg['workspace_samples_per_joint'])) for limits in cfg['workspace_ranges_deg']],indexing='ij')
     sampled=np.column_stack([g.ravel() for g in grid]);points=np.array([geometric_position(q,L) for q in sampled])
     fig=plt.figure(figsize=(10,4.5),layout='constrained');ax=fig.add_subplot(121,projection='3d');arm=joint_points(q0,L)
@@ -50,7 +53,8 @@ def run(run_id):
     fig.savefig(out/'interpolation.png',dpi=170);plt.close(fig)
     goal=geometric_position(cfg['position_target_q_rad'],L)
     position=control(cfg['position_q0_rad'],cfg['position_duration_s'],cfg['dt_s'],cfg['gain_per_s'],goal,L)
-    qtrack=inverse_position(cartesian_reference(0.)[0],L)[-1]+cfg['tracking_initial_offset_rad']
+    # Radio positivo y codo negativo del objetivo regular de seguimiento.
+    qtrack=inverse_position(cartesian_reference(0.)[0],L)[1]+cfg['tracking_initial_offset_rad']
     tracking=control(qtrack,cfg['tracking_duration_s'],cfg['dt_s'],cfg['gain_per_s'],lengths=L)
     fine=control(qtrack,cfg['tracking_duration_s'],cfg['dt_s']/2,cfg['gain_per_s'],lengths=L)
     stress=control([0,0,0],duration=1.,dt=.1,target=[.5,0,.04],lengths=L)
@@ -67,8 +71,8 @@ def run(run_id):
     ranks=[]
     for name,q in [('regular',q0),('elbow',[0,0,0]),('intersection',[0,np.pi/2,0])]:
         JL,_,J=jacobian(q,L);ranks.append(dict(case=name,rank_JL=int(np.linalg.matrix_rank(JL,tol=1e-10)),rank_J=int(np.linalg.matrix_rank(J,tol=1e-10)),det_JL=float(np.linalg.det(JL))))
-    metrics=dict(direct_residual_m=float(np.linalg.norm(T[:3,3]-p)),mth_residual=float(abs(T-M).max()),inverse_residuals_m=residuals,workspace_samples=len(points),interpolation=endpoints,position=control_metrics(position),tracking=control_metrics(tracking),tracking_half_step=control_metrics(fine),singular_control=control_metrics(stress),ranks=ranks)
-    checks={'direct':metrics['direct_residual_m']<1e-12,'inverse':max(residuals)<1e-12,'position':metrics['position']['final_error_m']<2e-5,'tracking_step':metrics['tracking_half_step']['tail_rmse_m']<.6*metrics['tracking']['tail_rmse_m']}
+    metrics=dict(direct_residual_m=float(np.linalg.norm(T[:3,3]-p)),mth_residual=float(abs(T-M).max()),inverse_residuals_m=dh_residuals, inverse_trig_residuals_m=trig_residuals,workspace_samples=len(points),interpolation=endpoints,position=control_metrics(position),tracking=control_metrics(tracking),tracking_half_step=control_metrics(fine),singular_control=control_metrics(stress),ranks=ranks)
+    checks={'direct':metrics['direct_residual_m']<1e-12,'inverse':inverse_ok,'position':metrics['position']['final_error_m']<2e-5,'tracking_step':metrics['tracking_half_step']['tail_rmse_m']<.6*metrics['tracking']['tail_rmse_m']}
     (out/'metrics.json').write_text(json.dumps(metrics,indent=2)+'\n')
     inputs=[cfgpath,*[ROOT/'code'/n for n in ['model.py','course.py','course_demo.py']]]
     manifest={'physical_measurements':False,'config':cfg,'checks':checks,'source_sha256':{str(p.relative_to(ROOT)):sha(p) for p in inputs},'output_sha256':{p.name:sha(p) for p in out.iterdir() if p.is_file()},'status':'Review'}

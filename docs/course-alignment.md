@@ -5,7 +5,7 @@ El desarrollo sigue los métodos de clase y utiliza las dimensiones del paper. L
 | Semana | Material revisado | Aplicación al proyecto |
 |---|---|---|
 | 4 | MTH, DH y método geométrico; ángulos de Euler | Comparación de posición geométrica, producto de transformaciones y DH |
-| 5 | Inversa geométrica, ley de cosenos y dos ramas | Reducción del RRR al plano radial, `atan2` y reconstrucción por directa |
+| 5 | Inversa geométrica, ley de cosenos y dos ramas | Dos bases con proyección radial de signo opuesto, dos codos por base y comprobación trigonométrica y DH |
 | 6 | Jacobiano analítico/geométrico, derivadas y determinante | Separación de `JL`, `Jw` y Jacobiano completo; comprobación numérica |
 | 7 | `Robot_3GDL_CD_Jacobianos.mlx` y apuntes antropomórficos | Misma tabla DH del robot actual; espacio de trabajo y singularidades |
 | 8 | Interpoladores cúbico y quíntico | Posición, velocidad y aceleración articulares con condiciones de frontera |
@@ -39,7 +39,7 @@ Los originales están en [assets/utility](../assets/utility/README.md), conserva
 
 ## Comprobaciones disponibles
 
-[Resultados preparados](../simulations/course/README.md): tres métodos de directa, dos ramas de inversa, 9261 posiciones muestreadas, interpoladores, control de posición, seguimiento y un caso de estancamiento singular. Las 29 pruebas comprueban además Jacobianos lineal/angular, determinante simbólico y convergencia temporal.
+[Resultados preparados](../simulations/course/README.md): tres métodos de directa, dos codos con base principal en la ejecución histórica, 9261 posiciones muestreadas, interpoladores, control de posición, seguimiento y un caso de estancamiento singular. El [notebook de inversa](../notebooks/inverse-kinematics/study.ipynb) amplía la comprobación a cuatro ternas fuera del eje. Las 29 pruebas comprueban además Jacobianos lineal/angular, determinante simbólico y convergencia temporal.
 
 El modelo base anterior era compatible con la semana 7. Faltaban la exposición por métodos, la inversa, los interpoladores y el control ejecutado; se incorporan en esta versión para revisión.
 

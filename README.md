@@ -6,7 +6,7 @@ El trabajo desarrolla la cinemática directa, inversa y diferencial, las singula
 
 **[Guía de estudio y notebooks](notebooks/README.md)** · **[Consultar informe PDF](report/output/report.pdf)** · [Fuentes LaTeX](report/main.tex) · [Resultados y gráficas](simulations/course/README.md) · [Tablero](https://github.com/users/jairzinhosantos/projects/4)
 
-El informe y los resultados se incluyen listos para consultar. No se requiere instalar herramientas ni ejecutar código para revisarlos. La versión actual es el **borrador 04**, preparado para revisión.
+El informe y los resultados se incluyen listos para consultar. No se requiere instalar herramientas ni ejecutar código para revisarlos. La versión actual es el **borrador 05**, preparado para revisión.
 
 ## Orden de lectura
 
