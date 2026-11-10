@@ -6,12 +6,14 @@ Resultados ya ejecutados en [run-001](results/run-001/metrics.json), con paráme
 |---|---|
 | Directa geométrica frente a DH | Residuo 2.78e-17 m |
 | Transformaciones elementales frente a DH | Diferencia máxima 8.33e-17 |
-| Inversa, dos ramas de codo | Residuo máximo 1.50e-16 m |
+| Inversa de run-001, dos codos con radio positivo | Residuo máximo 1.50e-16 m |
 | Espacio de trabajo | 9261 muestras; rangos ilustrativos del curso |
 | Cúbica y quíntica | Velocidad nula en extremos; sólo la quíntica impone también aceleración nula |
 | Control de posición | Error final 9.57e-6 m en 10 s |
 | Seguimiento | RMSE entre 10–20 s: 2.67e-4 m; con paso mitad: 1.33e-4 m |
 | Inicio singular y objetivo radial | Error de 0.03 m sin reducción; limitación de la pseudoinversa |
+
+El [notebook de inversa](../../notebooks/inverse-kinematics/study.ipynb) muestra las cuatro ternas del ejemplo de la presentación y sus errores por trigonometría y DH. Al ejecutar de nuevo la simulación del curso se obtienen ambos radios para el objetivo definido en su configuración.
 
 Las cifras describen simulación cinemática ideal sin saturación ni dinámica. Los objetivos, ganancias, duración y malla temporal están declarados; no son resultados experimentales del paper.
 

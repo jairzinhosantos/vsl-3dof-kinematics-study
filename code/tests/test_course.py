@@ -8,20 +8,37 @@ def test_course_dh_argument_order_and_units():
     np.testing.assert_allclose(dh(0,.04,0,np.pi/2),[[1,0,0,0],[0,0,-1,0],[0,1,0,.04],[0,0,0,1]],atol=1e-15)
 
 
-def test_three_forward_methods_and_both_inverse_branches():
+def test_three_forward_methods_and_four_inverse_branches():
+    # XYZ con precisión completa del caso regular de la diapositiva 24.
+    target = [0.33341978045700893, 0.19249999999999998, 0.2911473670974872]
+    expected = [[30, 6.23529807, 60], [30, 60, -60],
+                [-150, 120, 60], [-150, 173.76470193, -60]]
+    np.testing.assert_allclose(np.rad2deg(inverse_position(target)), expected, rtol=0, atol=1e-7)
     for q in np.random.default_rng(2026).uniform(-2.5,2.5,(120,3)):
         transform=forward(q)[0]
         np.testing.assert_allclose(homogeneous(q),transform,atol=1e-14)
         np.testing.assert_allclose(geometric_position(q),transform[:3,3],atol=1e-14)
         solutions=inverse_position(transform[:3,3])
-        assert len(solutions)==2
-        for solution in solutions:np.testing.assert_allclose(forward(solution)[0][:3,3],transform[:3,3],atol=1e-12)
+        assert len(solutions) == 4
+        assert len(np.unique(solutions.round(10), axis=0)) == 4
+        assert any(np.allclose(np.sin((candidate-q)/2), 0, atol=1e-10) for candidate in solutions)
+        for solution in solutions:
+            np.testing.assert_allclose(geometric_position(solution), transform[:3,3], atol=1e-12, rtol=0)
+            np.testing.assert_allclose(forward(solution)[0][:3,3], transform[:3,3], atol=1e-12, rtol=0)
 
 
 def test_inverse_degenerate_and_unreachable_cases():
     assert len(inverse_position([1,0,.04]))==0
     assert len(inverse_position([0,0,.04]))==0  # l2 != l3: hueco interior
-    assert len(inverse_position([.53,0,.04]))==1
+    for radius in [.05, .53]:
+        target = [radius, 0, .04]
+        solutions = inverse_position(target)
+        assert len(solutions) == 2
+        for candidate in solutions:
+            np.testing.assert_allclose(geometric_position(candidate), target, atol=1e-12)
+    assert len(inverse_position([0,0,.30])) == 2
+    assert len(inverse_position([0,0,.57])) == 1
+    assert len(inverse_position([0,0,.04],[.04,.2,.2])) == 1
     for q in inverse_position([0,0,.30],base_angle=.7):
         assert q[0]==pytest.approx(.7)
         np.testing.assert_allclose(forward(q)[0][:3,3],[0,0,.30],atol=1e-12)
@@ -52,7 +69,7 @@ def test_reference_velocity_and_position_control():
 
 
 def test_tracking_converges_under_step_refinement():
-    q0=inverse_position(cartesian_reference(0.)[0])[-1]+[.12,-.08,.10]
+    q0=inverse_position(cartesian_reference(0.)[0])[1]+[.12,-.08,.10]
     errors=[]
     for dt in [.1,.05]:
         r=control(q0,duration=20,dt=dt)

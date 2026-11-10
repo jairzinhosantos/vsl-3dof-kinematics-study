@@ -22,27 +22,41 @@ def homogeneous(q, lengths=DEFAULT_LENGTHS):
 
 
 def inverse_position(position, lengths=DEFAULT_LENGTHS, base_angle=0., tol=1e-10):
-    """Dos ramas de codo con radio positivo; eje de base: representante q1=base_angle.
+    """Soluciones XYZ en radianes, primero radio positivo y luego negativo.
 
-    Devuelve (0,3) si es inalcanzable. No aplica límites mecánicos desconocidos.
-    No enumera la familia adicional de base girada pi y radio con signo negativo.
+    Cada base devuelve el codo positivo antes del negativo. En el eje se usa
+    base_angle como representante. Un objetivo inalcanzable devuelve (0, 3).
     """
-    p, (l1,l2,l3)=parameters(position,lengths)
-    if not np.isfinite(base_angle):raise ValueError('base_angle debe ser finito')
-    radial=np.hypot(p[0],p[1]);height=p[2]-l1
-    c3=(radial**2+height**2-l2**2-l3**2)/(2*l2*l3)
-    if abs(c3)>1+tol:return np.empty((0,3))
-    c3=np.clip(c3,-1.,1.)
-    q1=np.arctan2(p[1],p[0]) if radial>tol else base_angle
-    if np.hypot(radial,height)<tol and abs(l2-l3)<tol:
-        return np.array([[q1,0.,np.pi]])
-    solutions=[]
-    for sign in [1.,-1.]:
-        q3=np.arctan2(sign*np.sqrt(max(0.,1-c3*c3)),c3)
-        q2=np.arctan2(height,radial)-np.arctan2(l3*np.sin(q3),l2+l3*np.cos(q3))
-        q=np.array([q1,q2,q3]);q=(q+np.pi)%(2*np.pi)-np.pi
-        if not any(np.linalg.norm(np.angle(np.exp(1j*(q-old))))<tol for old in solutions):solutions.append(q)
-    return np.array(solutions)
+    (x, y, z), (l1, l2, l3) = parameters(position, lengths)
+    if not np.isfinite(base_angle):
+        raise ValueError("base_angle debe ser finito")
+    radius = np.hypot(x, y)
+    height = z - l1
+    c3 = (radius**2 + height**2 - l2**2 - l3**2) / (2*l2*l3)
+    if abs(c3) > 1 + tol:
+        return np.empty((0, 3))
+    if abs(abs(c3) - 1) <= 8*np.finfo(float).eps:
+        c3 = np.sign(c3)
+    c3 = np.clip(c3, -1, 1)
+
+    # En el centro, dos eslabones iguales plegados permiten cualquier hombro.
+    if radius <= tol and abs(height) <= tol and abs(l2 - l3) <= tol:
+        return np.array([[base_angle, 0., np.pi]])
+    if radius <= tol:
+        bases = [(base_angle, 0.)]
+    else:
+        angle = np.arctan2(y, x)
+        bases = [(angle, radius), (angle + np.pi, -radius)]
+
+    elbow = np.arccos(c3)
+    elbows = [elbow] if abs(c3) == 1 else [elbow, -elbow]
+    solutions = []
+    for q1, signed_radius in bases:
+        for q3 in elbows:
+            offset = np.arctan2(l3*np.sin(q3), l2 + l3*c3)
+            q2 = np.arctan2(height, signed_radius) - offset
+            solutions.append([q1, q2, q3])
+    return (np.array(solutions) + np.pi) % (2*np.pi) - np.pi
 
 
 def polynomial(q0,qf,t,duration,order=5):

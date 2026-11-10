@@ -79,7 +79,7 @@ flowchart LR
 |---|---|
 | `position(q)` | Obtener posición desde el estado articular |
 | `linear_jacobian(q)` | Relacionar velocidades en la configuración actual |
-| `inverse_position(...)` | Elegir la configuración inicial del seguimiento |
+| `principal_base_elbows(...)` | Elegir la configuración inicial del seguimiento |
 | `reference(t)` | Entregar posición deseada y su derivada analítica |
 | `simulate_control(...)` | Repetir medición ideal, error, orden e integración |
 | `np.linalg.pinv(JL)` | Convertir la velocidad cartesiana en orden articular |
@@ -95,7 +95,7 @@ Las funciones necesarias están visibles en el notebook. `target=None` seleccion
 
 $$h_d(t)=\begin{bmatrix}0.35+0.03\cos(0.4t)\\0.10+0.03\sin(0.4t)\\0.23+0.02\sin(0.5t)\end{bmatrix}\mathrm{m}.$$
 
-La condición inicial se obtiene por inversa de $h_d(0)$, con la rama de codo negativa y un desplazamiento articular de $(0.12,-0.08,0.10)$ rad. Este desplazamiento genera el transitorio. El RMSE cartesiano se define como $\sqrt{\frac1N\sum_k\|e_k\|^2}$, sin dividir nuevamente por los tres ejes.
+La condición inicial se obtiene por inversa de $h_d(0)$, con la base de radio positivo y el codo negativo y un desplazamiento articular de $(0.12,-0.08,0.10)$ rad. Este desplazamiento genera el transitorio. El RMSE cartesiano se define como $\sqrt{\frac1N\sum_k\|e_k\|^2}$, sin dividir nuevamente por los tres ejes.
 
 Con paso 0.1 s, el RMSE entre 10–20 s es aproximadamente $2.67\times10^{-4}$ m; al reducir el paso a 0.05 s disminuye a $1.33\times10^{-4}$ m. El RMSE de todo el intervalo de 20 s, incluido el transitorio, es aproximadamente 0.008589 m para paso 0.1 s. Indicar la ventana es necesario para interpretar las cifras.
 
